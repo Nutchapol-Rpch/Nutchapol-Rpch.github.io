@@ -1,16 +1,25 @@
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            text-align: left;
-            padding: 8px;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        .add-button {
-            margin-top: 10px;
-            width: 200px;
-            border-radius: 6px;
-        }
+.table-list {
+    border-spacing: 0;
+    border-collapse: collapse;
+    box-shadow: 0px 0px 11px 0px #aaa;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.add-button {
+    margin-top: 10px;
+    width: 200px;
+    border-radius: 6px;
+}
+
+.thead-list {
+    background-color: bisque;
+}
+
