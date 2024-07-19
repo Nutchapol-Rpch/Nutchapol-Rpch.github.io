@@ -41,6 +41,7 @@
             </div>
         </div>
     </div>
+    <hr style="border: 1px solid black; margin-left: 80px; margin-right: 80px;">
 
         <div class="container">
         <div class="row">
@@ -90,9 +91,9 @@
                 <thead class="thead-list">
                     <tr>
                         <th>Accessory</th>
-                        <th>Quantity</th>
-                        <th>Unit Price</th>
-                        <th>Amount</th>
+                        <th class="text-center">Quantity</th>
+                        <th class="text-center">Unit Price</th>
+                        <th class="text-center">Amount</th>
                     </tr>
                 </thead>
                 <tbody >
@@ -102,15 +103,15 @@
                 <tfoot>
                     <tr id="sub-total">
                         <td colspan="3" class="text-right"> Subtotal</td>
-                        <td colspan="1" class="text-right" id="subTotal">---</td>
+                        <td colspan="1" class="text-right" id="subTotal">$0.00</td>
                     </tr>
                     <tr>
                         <td colspan="3" class="text-right"> VAT</td>
-                        <td colspan="1" class="text-right" id="vat">--</td>
+                        <td colspan="1" class="text-right" id="vat">$0.00</td>
                     </tr>
                     <tr>
                         <td colspan="3" class="text-right"> Total Amount</td>
-                        <td colspan="1" class="text-right" id="total">--</td>
+                        <td colspan="1" class="text-right" id="total">$0.00</td>
                     </tr>
                 </tfoot>
             </table>
@@ -228,9 +229,9 @@
                 <button onclick="deleteItem(${i})" style="background-color:#FF5E52; border:none; border-radius: 22%; margin-left: 4px; margin-top: 4px; margin-bottom: 4px;">X</button>
                 ${e.accessory}
             </td>
-            <td class="text-right">${e.quantity}</td>
-            <td class="text-right">${e.unitPrice.toFixed(2)}</td>
-            <td class="text-right" style="margin-right: 10px;">${amount.toFixed(2)}</td>
+            <td class="text-center">${e.quantity}</td>
+            <td class="text-center">$${e.unitPrice.toFixed(2)}</td>
+            <td class="text-right" style="margin-right: 10px;">$${amount.toFixed(2)}</td>
             </tr>`;                        
             })
 
