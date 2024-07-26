@@ -6,13 +6,38 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import DataTable from './components/DataTable'
 import productList from './accessory-products.json'
+import 'bootstrap-icons/font/bootstrap-icons.css'; 
 
 function App() {
   const productRef = useRef()
   const quantityRef = useRef()
 
   const [price, setPrice] = useState(productList[0].price)
-  const [selectedItems, setSelectedItems] = useState([])
+  const [selectedItems, setSelectedItems] = useState([]) // actual data
+  const [filteredSelectedItems, setFilteredSelectedItems] = useState([]) // for show only
+
+  const deleteItemByIndex = (index) => { 
+    selectedItems.splice(index, 1) 
+    setFilteredSelectedItems([...selectedItems]) 
+    console.table(selectedItems)
+  } 
+
+  const sortAsc = () => {
+    const sortedItems = [...selectedItems].sort((a, b) => a.name.localeCompare(b.name));
+    setFilteredSelectedItems(sortedItems);
+    console.table(filteredSelectedItems);
+  }
+
+  const sortDes = () => {
+    const sortedItems = [...selectedItems].sort((a, b) => b.name.localeCompare(a.name));
+    setFilteredSelectedItems(sortedItems);
+  }
+
+  const search = (keyword) => { 
+    setFilteredSelectedItems([ 
+      ...selectedItems.filter(item=> item.name.toLowerCase().includes(keyword.toLowerCase())) 
+    ]) 
+  } 
 
   const handleSelect = (e)=> {
     const pid = parseInt(productRef.current.value)
@@ -39,6 +64,7 @@ function App() {
     })
     
     setSelectedItems([...selectedItems])
+    setFilteredSelectedItems([...selectedItems])
 
     console.table(selectedItems)
   }
@@ -80,7 +106,13 @@ function App() {
           <Button variant="success" onClick={handleAdd}>Add</Button>
           </Col>
           <Col>
-            <DataTable data={selectedItems} />
+            <DataTable
+              data={filteredSelectedItems} 
+              onDelete={deleteItemByIndex}
+              onSearch={search}
+              onAsc={sortAsc}
+              onDes={sortDes}
+              />
           </Col>
         </Row>
       </Container>
